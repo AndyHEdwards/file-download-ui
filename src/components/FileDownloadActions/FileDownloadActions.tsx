@@ -29,7 +29,11 @@ export const FileDownloadActions = ({
         {numberOfFilesSelected ? `Selected ${numberOfFilesSelected}` : 'None Selected'}
       </label>
 
-      <button onClick={handleFilesDownload} className="file-download-actions__download-button">
+      <button
+        onClick={handleFilesDownload}
+        className="file-download-actions__download-button"
+        aria-label="Download files"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
