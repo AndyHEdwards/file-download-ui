@@ -25,10 +25,26 @@ export const FileDownload = ({ files: initialFiles }: FileDownloadProps) => {
     );
   };
 
+  const handleFilesDownload = () => {
+    const downloadList = availableFiles.reduce((fileList, { selected, device, path }) => {
+      if (selected) {
+        fileList.push(`${device}: ${path}`);
+      }
+      return fileList;
+    }, [] as string[]);
+
+    if (downloadList.length > 0) {
+      alert(downloadList.join('\r\n'));
+    } else {
+      alert('No files selected for download');
+    }
+  };
+
   return (
     <section className="file-download">
       <FileDownloadActions
         handleSelectAllFiles={handleSelectAllFiles}
+        handleFilesDownload={handleFilesDownload}
         numberOfFilesAvailable={availableFiles.length}
         numberOfFilesSelected={files.filter((file) => file.selected).length}
       />

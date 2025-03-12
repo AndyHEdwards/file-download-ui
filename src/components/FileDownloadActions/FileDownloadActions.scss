@@ -21,5 +21,16 @@
     border: none;
     padding: 0;
     font-size: inherit;
+
+    // add custom styles
+    display: flex;
+    align-items: center;
+
+    &__icon {
+      width: 1.5rem;
+      height: 1.5rem;
+
+      margin-right: 0.2rem;
+    }
   }
 }
