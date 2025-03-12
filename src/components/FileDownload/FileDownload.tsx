@@ -49,7 +49,9 @@ export const FileDownload = ({ files: initialFiles }: FileDownloadProps) => {
         numberOfFilesSelected={files.filter((file) => file.selected).length}
       />
 
-      <FileDownloadTable files={files} handleSelectFile={handleSelectFile} />
+      <div className="file-download__table-wrapper">
+        <FileDownloadTable files={files} handleSelectFile={handleSelectFile} />
+      </div>
     </section>
   );
 };

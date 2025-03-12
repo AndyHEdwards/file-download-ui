@@ -1,4 +1,8 @@
 .file-download {
   max-width: 1280px;
   margin: auto;
+
+  &__table-wrapper {
+    overflow-x: auto;
+  }
 }

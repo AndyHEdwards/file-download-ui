@@ -1,4 +1,10 @@
 :root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+
+  @media (max-width: 640px) {
+    font-size: 85%;
+  }
+
   input[type='checkbox']:not([disabled]),
   button:not([disabled]) {
     cursor: pointer;
