@@ -1,0 +1,6 @@
+:root {
+  input[type='checkbox']:not([disabled]),
+  button:not([disabled]) {
+    cursor: pointer;
+  }
+}

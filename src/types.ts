@@ -3,4 +3,5 @@ export interface File {
   device: string;
   path: string;
   status: 'available' | 'scheduled';
+  selected?: boolean;
 }

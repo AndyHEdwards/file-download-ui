@@ -2,11 +2,14 @@ import './FileDownloadTable.scss';
 
 import type { File } from '../../types';
 
-export const FileDownloadTable = ({ files }: FileDownloadTableProps) => {
+import { FileDownloadTableRow } from '../';
+
+export const FileDownloadTable = ({ files, handleSelectFile }: FileDownloadTableProps) => {
   return (
     <table className="file-download-table">
       <thead>
         <tr>
+          <th className="file-download-table__head"></th>
           <th className="file-download-table__head">Name</th>
           <th className="file-download-table__head">Device</th>
           <th className="file-download-table__head">Path</th>
@@ -15,12 +18,7 @@ export const FileDownloadTable = ({ files }: FileDownloadTableProps) => {
       </thead>
       <tbody>
         {files.map((file: File, index: number) => (
-          <tr key={index}>
-            <td>{file.name}</td>
-            <td>{file.device}</td>
-            <td>{file.path}</td>
-            <td>{file.status}</td>
-          </tr>
+          <FileDownloadTableRow file={file} key={index} handleSelectFile={handleSelectFile} />
         ))}
       </tbody>
     </table>
@@ -29,4 +27,5 @@ export const FileDownloadTable = ({ files }: FileDownloadTableProps) => {
 
 interface FileDownloadTableProps {
   files: File[];
+  handleSelectFile: (file: File) => void;
 }

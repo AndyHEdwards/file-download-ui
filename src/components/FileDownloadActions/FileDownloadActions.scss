@@ -9,6 +9,9 @@
   &__select-all {
     display: flex;
     align-items: center;
+
+    min-width: 9rem;
+    cursor: pointer;
   }
 
   &__download-button {
