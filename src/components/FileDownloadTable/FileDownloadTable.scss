@@ -1,0 +1,15 @@
+.file-download-table {
+  width: 100%;
+  border-collapse: collapse;
+
+  td,
+  th {
+    padding: 0.5rem;
+  }
+
+  &__head {
+    text-align: left;
+    padding: 0.5rem;
+    border-bottom: 1px solid grey;
+  }
+}
