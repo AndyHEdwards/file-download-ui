@@ -1,54 +1,40 @@
-# React + TypeScript + Vite
+# File Download UI
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project was scaffolded with [React + Vite + TypeScript](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) + [SASS](https://vite.dev/guide/features.html#css-pre-processors). It is also using [Vitest](https://vitest.dev/guide/) and [RTL](https://testing-library.com/docs/react-testing-library/intro/) for unit and integration testing, and [ESLint](https://eslint.org/) and [Prettier](https://prettier.io/) for linting and formatting.
 
-Currently, two official plugins are available:
+I have prior experience with Ember.js, but have been using React.js more in recent years so decided to use it for this task.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The project is hosted here: https://andyhedwards.github.io/file-download-ui/
 
-## Expanding the ESLint configuration
+## Local setup
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+To start the local development server run the following commands in the root of the project...
 
 ```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+npm install
+npm run dev
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+// Server runs on http://localhost:5173/
 ```
+
+and then to run the tests...
+
+```js
+npm run test
+```
+
+## Architecture
+
+![screenshot](component-architecture.png)
+
+## Testing
+
+Due to time constraints for this task, I haven't gone overboard with testing but have included some examples of the kind of tests I would generally like to see for a component like this. Namely, the more integration-style tests in `FileDownload.test.tsx` that interact with the component like an actual user would, and then more traditional unit tests to capture the logic around the `capitaliseFirstLetter` utility function. Between these tests, I have achieved 100% code coverage (of the FileDownload component and its children, at least) without getting bogged down testing implementation details.
+
+## Styling
+
+Again, given the limited time to complete this challenge, I decided to go ahead with a pretty basic SASS + BEM styling approach. Each component has an associated SASS file with a top-level "Block" with subsequent "Elements" and "Modifiers" where necessary. A child component would then define its own top-level "Block". To make this more robust in a production environment, we could consider combining this approach with something like CSS Modules to handle naming conflicts / scoping for us, but again, this seemed like overkill for this task.
+
+## Mobile responsive
+
+To make the file download component mobile responsive, the table can scroll left and right while the download actions remain in place. I also set the font-size to 85% on mobile devices, which, combined with using REMs for padding, makes everything slightly more compact on smaller screens.
