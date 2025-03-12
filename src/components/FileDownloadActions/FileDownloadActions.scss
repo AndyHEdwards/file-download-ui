@@ -1,0 +1,22 @@
+.file-download-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  border-bottom: 1px solid grey;
+  padding: 0.5rem;
+
+  &__select-all {
+    display: flex;
+    align-items: center;
+  }
+
+  &__download-button {
+    // reset button styles
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font-size: inherit;
+  }
+}
