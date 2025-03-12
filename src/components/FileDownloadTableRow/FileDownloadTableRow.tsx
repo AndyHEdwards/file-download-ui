@@ -1,6 +1,7 @@
 import './FileDownloadTableRow.scss';
 
 import { File } from '../../types';
+import { capitaliseFirstLetter } from '../../utils';
 
 export const FileDownloadTableRow = ({ file, handleSelectFile }: FileDownloadTableRowProps) => {
   const isFileAvailable = file.status === 'available';
@@ -16,7 +17,10 @@ export const FileDownloadTableRow = ({ file, handleSelectFile }: FileDownloadTab
       <td>{file.name}</td>
       <td>{file.device}</td>
       <td>{file.path}</td>
-      <td className="download-table-row__status">{file.status}</td>
+      <td className="file-download-table-row__status">
+        {isFileAvailable ? <span className="file-download-table-row__status-icon"></span> : ''}
+        {capitaliseFirstLetter(file.status)}
+      </td>
     </tr>
   );
 };
